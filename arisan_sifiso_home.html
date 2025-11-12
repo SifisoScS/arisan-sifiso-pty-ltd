@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARISAN SIFISO - Empowering the Next Generation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: -0.25rem;
+        }
+
+        /* Navigation */
+        nav.desktop-nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav.desktop-nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav.desktop-nav a:hover {
+            color: var(--primary);
+        }
+
+        nav.desktop-nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        nav.desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav.desktop-nav a:hover::after,
+        nav.desktop-nav a.active::after {
+            width: 100%;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-section h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-buttons .primary-btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-buttons .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-buttons .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-buttons .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mission & Vision Cards */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mission-card, .vision-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .mission-card h4, .vision-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .mission-card p, .vision-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Key Pillars */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .pillar-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .pillar-card h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Vision 2030 Section */
+        .vision-2030 {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .vision-2030 h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .vision-2030 p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .vision-2030 .cta-button {
+            background: white;
+            color: var(--primary);
+        }
+
+        .vision-2030 .cta-button:hover {
+            background: var(--bg-light);
+        }
+
+        /* Hashtag */
+        .hashtag-section {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+            margin: 2rem 0;
+        }
+
+        .hashtag-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        footer .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+
+            nav.desktop-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            main {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .section-header h3 {
+                font-size: 1.75rem;
+            }
+
+            .pillars-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>ARISAN SIFISO</h1>
+                    <p>Founded 2023</p>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <a href="#home" class="active">Home</a>
+                <a href="#mission">Mission</a>
+                <a href="#vision">Vision</a>
+                <a href="#pillars">Pillars</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <button class="cta-button hidden md:block">Join Our Mission</button>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-rocket mr-2"></i> Empowering the Next Generation
+            </div>
+            <h2>ARISAN SIFISO</h2>
+            <p>A transformative journey to establish a global institution for education and technology</p>
+            <div class="hero-buttons">
+                <button class="primary-btn">
+                    <i class="fas fa-play-circle mr-2"></i> Learn More
+                </button>
+                <button class="secondary-btn">
+                    <i class="fas fa-envelope mr-2"></i> Get in Touch
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Mission & Vision Section -->
+        <section class="section" id="mission">
+            <div class="section-header">
+                <h3>Our Mission & Vision</h3>
+                <p>Breaking barriers to learning and creating opportunities for everyone</p>
+            </div>
+
+            <div class="mission-vision-grid">
+                <!-- Mission Card -->
+                <div class="mission-card">
+                    <h4><i class="fas fa-target mr-2 text-accent"></i> Our Mission</h4>
+                    <p>To break down the barriers to learning, ensuring that anyone with the willingness to learn is embraced, regardless of their formal educational background. We are committed to reaching every corner of the world, from rural to urban areas, because we firmly believe in the power of education and technology to change lives.</p>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="vision-card">
+                    <h4><i class="fas fa-star mr-2 text-accent"></i> Our Vision</h4>
+                    <p>To create a global community of learners, where knowledge knows no boundaries and opportunities are accessible to all. Through innovative solutions, high-quality learning experiences, and cutting-edge technology, we are paving the way for a brighter future. Vision 2030 - Let us all work together to change the lives of generations to come.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="section" id="overview">
+            <div class="overview-section">
+                <h4><i class="fas fa-info-circle mr-2 text-primary"></i> Overview</h4>
+                <p><strong>ARISAN SIFISO Pty Ltd</strong> is on a transformative journey with a grand vision - to establish a global institution for education and technology. Our mission is to break down the barriers to learning, ensuring that anyone with the willingness to learn is embraced, regardless of their formal educational background.</p>
+                <p>We are committed to reaching every corner of the world, from rural to urban areas, because we firmly believe in the power of education and technology to change lives. Our aspiration is to create a global community of learners, where knowledge knows no boundaries and opportunities are accessible to all.</p>
+                <p>Through innovative solutions, high-quality learning experiences, and cutting-edge technology, ARISAN SIFISO is paving the way for a brighter future. Vision 2030 - Let us all work together to change the lives of generations to come. Join us in our mission to revolutionize education and technology, and together, we can change the world, one learner at a time.</p>
+            </div>
+        </section>
+
+        <!-- Key Pillars Section -->
+        <section class="section" id="pillars">
+            <div class="section-header">
+                <h3>Our Core Values</h3>
+                <p>The pillars that drive our mission forward</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h5>Success</h5>
+                    <p>Committed to achieving excellence in every endeavor</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h5>Innovation</h5>
+                    <p>Pioneering cutting-edge solutions for education</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h5>Future</h5>
+                    <p>Building tomorrow's opportunities today</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h5>Inspiration</h5>
+                    <p>Motivating learners to reach their potential</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h5>Support</h5>
+                    <p>Providing comprehensive assistance to all learners</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h5>Opportunities</h5>
+                    <p>Creating pathways to success for everyone</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision 2030 Section -->
+        <section class="vision-2030">
+            <h3>Vision 2030</h3>
+            <p>Let us all work together to change the lives of generations to come</p>
+            <button class="cta-button">
+                <i class="fas fa-handshake mr-2"></i> Join Our Mission
+            </button>
+        </section>
+
+        <!-- Hashtag Section -->
+        <section class="hashtag-section">
+            <h4>#NextGenerationDeservesTheBest</h4>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">Together, we are revolutionizing education and technology</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3 style="margin-bottom: 1rem;">ARISAN SIFISO Pty Ltd</h3>
+        <p>SUCCESS INNOVATION FUTURE INSPIRATION SUPPORT OPPORTUNITIES</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">© 2023-2025 ARISAN SIFISO Pty Ltd. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        menuBtn?.addEventListener('click', () => {
+            // You can add mobile menu functionality here
+            alert('Mobile menu would open here');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
